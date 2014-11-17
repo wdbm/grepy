@@ -4,10 +4,6 @@
 #                                                                              #
 ################################################################################
 #                                                                              #
-# version: 2014-08-11T2347                                                     #
-#                                                                              #
-################################################################################
-#                                                                              #
 # LICENCE INFORMATION                                                          #
 #                                                                              #
 # This program provides regular expression utilities in Python.                #
@@ -32,11 +28,16 @@
 #                                                                              #
 ################################################################################
 
+version = "2014-08-11T2347"
+
 import os
 import re
 import sys
 
-def fileMatch(fileName, regexPattern):
+def fileMatch(
+    fileName,
+    regexPattern
+    ):
     try:
         file = open(fileName, "rt")
     except IOError:
@@ -44,12 +45,12 @@ def fileMatch(fileName, regexPattern):
     for i, line in enumerate(file):
         if regexPattern.search(line):
             lineIndex = i + 1
-            return [fileName, lineIndex, line]
+            return([fileName, lineIndex, line])
     file.close()
 
 def grep(
     directory = None,
-    pattern = None
+    pattern   = None
     ):
     regexPattern = re.compile(pattern)
     results = []
